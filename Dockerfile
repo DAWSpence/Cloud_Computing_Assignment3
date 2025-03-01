@@ -1,13 +1,9 @@
-FROM ubuntu
+FROM python:3.9-slim
 
 WORKDIR /home/data
-COPY script.py .
-COPY IF.txt .
-COPY AlwaysRememberUsThisWay.txt .
-COPY result.txt ./output
 RUN mkdir /home/data/output
+COPY script.py IF-1.txt AlwaysRememberUsThisWay-1.txt ./
+COPY result.txt ./output
 
-RUN apt update \
-	&& apt install python3
-
+CMD [ "python3","script.py" ]
 
